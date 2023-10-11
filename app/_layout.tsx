@@ -20,7 +20,7 @@ SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const [loaded, error] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
+    DMSans: require('../assets/fonts/DMSans-Regular.ttf'),
     ...FontAwesome.font,
   });
 
@@ -54,3 +54,5 @@ function RootLayoutNav() {
     </ThemeProvider>
   );
 }
+
+// Với nested route thì sao làm sao cho vào stack.screen
