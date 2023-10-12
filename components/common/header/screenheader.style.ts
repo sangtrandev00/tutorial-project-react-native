@@ -1,6 +1,8 @@
-import { StyleSheet } from "react-native";
+import { ImageStyle, StyleSheet, TextStyle, ViewStyle } from "react-native";
 
 import { COLORS, SIZES } from "../../../constants";
+
+type functionType = (dimension : number) => ViewStyle | TextStyle |  ImageStyle;
 
 const styles = StyleSheet.create({
   btnContainer: {
@@ -11,11 +13,14 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  btnImg: (dimension) => ({
+  btnImg : (dimension : number): ViewStyle | TextStyle | ImageStyle => ({
     width: dimension,
     height: dimension,
     borderRadius: SIZES.small / 1.25,
   }),
 });
+
+
+
 
 export default styles;

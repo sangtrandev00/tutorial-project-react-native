@@ -69,4 +69,6 @@ const styles = StyleSheet.create({
   }),
 });
 
+// Chuyển mấy cái function dynamic style như thế này về job làm sao ?
+
 export default styles;

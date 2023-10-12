@@ -1,19 +1,45 @@
-import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import React, {useState} from 'react'
+import { StyleSheet, Text, View, ScrollView, SafeAreaView, TouchableOpacity, ActivityIndicator } from 'react-native';
+// Activity indicator là gì ?
+import {Stack, useRouter} from 'expo-router';
+import {COLORS, icons, images, SIZES} from '../constants';
+import {Nearbyjobs, Popularjobs, ScreenHeaderBtn, Welcome} from '../components';
 
 type Props = {}
 
 function Index({}: Props) {
 
-    console.log("Am here to the index page !")
+  const router = useRouter();
+  
+  console.log("Am here to the index page !");
+  console.log("router: ", router);
+
+  console.log("icons: ", icons);
 
   return (
-    <View style={{flex: 1}}>
-        <Text style={[{color: 'white'}, styles.container]}>Index Page</Text>
-        <View style={{flex: 1, backgroundColor: 'red'}}></View>
-        <View style={{flex: 2, backgroundColor: 'blue'}}></View>
-        <View style={{flex: 3, backgroundColor: 'green'}}></View>
-    </View>
+    <SafeAreaView style={{flex: 1, backgroundColor: COLORS.lightWhite}}>
+      <Stack.Screen options={{
+            headerStyle: {backgroundColor: COLORS.primary},  
+            headerTitleStyle: {fontWeight: 'bold'} ,
+            headerTintColor: 'white', headerShadowVisible: false, 
+            headerLeft: () => (<ScreenHeaderBtn iconUrl={icons.menu} dimension="60%"/>), 
+            headerRight: () => (<ScreenHeaderBtn iconUrl={images.profile} dimension="100%"/>), 
+            headerTitle: "My Home" }}
+          />
+
+      <ScrollView showsVerticalScrollIndicator={false}>
+          <View 
+          style={{flex: 1, padding: SIZES.medium}}
+          >
+            <Welcome/>
+
+          <Popularjobs/>
+          <Nearbyjobs/>
+
+          </View>
+      </ScrollView>
+
+    </SafeAreaView>
   )
 }
 

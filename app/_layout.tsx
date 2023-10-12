@@ -2,9 +2,8 @@ import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 import { SplashScreen, Stack } from 'expo-router';
-import { useEffect } from 'react';
+import { useEffect, useCallback } from 'react';
 import { useColorScheme } from 'react-native';
-
 export {
   // Catch any errors thrown by the Layout component.
   ErrorBoundary,
@@ -20,7 +19,9 @@ SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const [loaded, error] = useFonts({
-    DMSans: require('../assets/fonts/DMSans-Regular.ttf'),
+    DMBold: require('../assets/fonts/DMSans-Bold.ttf'),
+    DMMedium: require('../assets/fonts/DMSans-Medium.ttf'),
+    DMRegular: require('../assets/fonts/DMSans-Regular.ttf'),
     ...FontAwesome.font,
   });
 
@@ -38,6 +39,7 @@ export default function RootLayout() {
   if (!loaded) {
     return null;
   }
+
 
   return <RootLayoutNav />;
 }
