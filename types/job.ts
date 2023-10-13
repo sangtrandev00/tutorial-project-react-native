@@ -10,5 +10,7 @@ export interface IJob {
         Qualifications: string[];
         Benefits: string[];
         Responsibilities: string[];
-    }
+    };
+    job_description: string;
+    job_google_link: string;
 }

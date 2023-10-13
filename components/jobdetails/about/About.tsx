@@ -8,7 +8,6 @@ const About = ({description}: {description: string}) => {
     <View style={styles.container}>
       <Text style={styles.headText}>About</Text>
 
-
         <View style={styles.contentBox}>
           <Text style={styles.contextText}>{description}</Text>
         </View>

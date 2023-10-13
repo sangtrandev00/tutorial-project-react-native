@@ -8,7 +8,9 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "test": "jest --watchAll",
-    "ts:check": "tsc"
+    "ts:check": "tsc",
+    "build": "expo build",
+    "publish": ""
   },
   "jest": {
     "preset": "jest-expo"

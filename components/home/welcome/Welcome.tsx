@@ -6,7 +6,7 @@ import {icons, SIZES} from '../../../constants';
 
 const jobTypes = ['Full-time','Part-time','Contractor']
 
-const Welcome = () => {
+const Welcome = ({searchTerm, setSearchTerm, handleClick}: {searchTerm: string, setSearchTerm: (text: string) => void, handleClick: () => void}) => {
 
   const router = useRouter();
 
@@ -20,10 +20,10 @@ const Welcome = () => {
       </View>
       <View style={styles.searchContainer}>
         <View style={styles.searchWrapper}>
-          <TextInput style={styles.searchInput} placeholder="Search to find your perfect job!" value="" onChange={() => {}}/>
+          <TextInput style={styles.searchInput} placeholder="Search to find your perfect job!" value={searchTerm} onChange={(text) => setSearchTerm(text.nativeEvent.text)}/>
         </View>
 
-        <TouchableOpacity style={styles.searchBtn} onPress={() => {}}>
+        <TouchableOpacity style={styles.searchBtn} onPress={handleClick}>
           <Image source={icons.search} resizeMode="contain" style={styles.searchBtnImage}/>
         </TouchableOpacity>
 

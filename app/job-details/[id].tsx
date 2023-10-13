@@ -23,7 +23,12 @@ const JobDetails = () => {
 
   const jobDetail = (data as IJob[])[0];
 
-  const onRefresh = () => {}
+  const onRefresh = useCallback(() => {
+
+    setRefreshing(true);
+    refetch();
+    setRefreshing(false);
+  },[])
 
 
   const [activeTab, setActiveTab] = useState(tabs[0]);
@@ -38,7 +43,7 @@ const JobDetails = () => {
 
       case 'Responsibilities':
         
-        break;
+      return <Specifics title="Responsibilities" points={jobDetail.job_highlights.Responsibilities ?? ['N/A']}/>
     
       default:
 
@@ -65,6 +70,7 @@ const JobDetails = () => {
       <Text style={{textAlign: 'center', marginTop: 20}}>Job Detail with #{id}</Text>
       </Stack.Screen>
       <>
+      {/* Scroll View like an layout -- change some thing when scroll */}
          <ScrollView showsVerticalScrollIndicator={false} refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh}/>}>
             {isLoading ? <ActivityIndicator size="large" color={COLORS.primary} /> : (error ? (<Text>Something went wrong</Text>): (data as IJob[]).length === 0 ? (<Text>No Data</Text>): <View style={{padding: SIZES.medium, paddingBottom: 100}}>
               <Company 
@@ -85,6 +91,9 @@ const JobDetails = () => {
 
             </View>)}
          </ScrollView>
+
+         <JobFooter url={jobDetail?.job_google_link ?? 'https://careers.google.com/jobs/results'}/>
+
       </>
     </SafeAreaView>
   )
